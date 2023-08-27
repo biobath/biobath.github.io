@@ -9,22 +9,24 @@ type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage, author } =
   Astro.props;
+
 ---
 
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body class="min-h-screen flex flex-col">
-    <Header />
-    <main class="max-w-4xl h-full mx-auto p-10 flex flex-col flex-grow">
+  <body class={`min-h-screen flex flex-col`}>
+    <Header/>
+    <main class="max-w-4xl h-full mx-auto p-10 flex flex-col flex-grow bg-white px-2">
+      <div class="">
       <article class="grid py-6 gap-4">
         <div>
           {
             heroImage && (
               <img width={1020} height={510} src={heroImage} alt="" />
-            )
-          }
+              )
+            }
         </div>
         <div>
           <div class="grid gap-6">
@@ -34,9 +36,9 @@ const { title, description, pubDate, updatedDate, heroImage, author } =
                 updatedDate && (
                   <div>
                     Last updated on <FormattedDate date={updatedDate} />
-                  </div>
-                )
-              }
+                    </div>
+                    )
+                  }
             </div>
             <h1 class="font-semibold text-lg">{title}</h1>
             <h2>By {author}</h2>
@@ -45,6 +47,7 @@ const { title, description, pubDate, updatedDate, heroImage, author } =
           <slot />
         </div>
       </article>
+      </div>
     </main>
     <script
       src="https://utteranc.es/client.js"
@@ -56,4 +59,4 @@ const { title, description, pubDate, updatedDate, heroImage, author } =
       async></script>
     <Footer />
   </body>
-</html>
+  </html>
