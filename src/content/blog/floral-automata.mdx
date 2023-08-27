@@ -25,51 +25,39 @@ I think Aaronson and Carroll's idea has a huge potential for generative art. But
 
 When you implement a cellular automaton, you may either choose to make the leftmost and rightmost cells have a single neighbor or to make them neighbors of each other, therefore embedding the row of cells into a circular topology. The best way to visualize this is by arranging cells in a circle, such as in the image below.
 
-{<center>
-
-  <blockquote class="imgur-embed-pub" lang="en" data-id="K9seNl0"></blockquote>
-  <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-  <p><em>"Rule 90" elementary cellular automaton, drawn on a circle</em></p>
-</center>}
+<img src="https://s.imgur.com/K9seNl0" />
+<em>"Rule 90" elementary cellular automaton, drawn on a circle</em>
 
 Of course this is just one of many such automata (256 to be exact). They come in very different shapes (see for example rules 18, 30, 57, 60, 89 in the album below):
 
-{<center>
-
-  <blockquote class="imgur-embed-pub" lang="en" data-id="a/xWdLG"></blockquote>
-  <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-  <p><em>All 256 elementary floral automata. Each tape is initialized all-white except for 8 equally spaced black cells.</em></p>
-</center>}
+<img src="https://i.imgur.com/YzmoKKr.png" />
+<em>
+  All 256 elementary floral automata. Each tape is initialized all-white except
+  for 8 equally spaced black cells.
+</em>
 
 Some of these rules however yield unpleasant "mandalas" as they exhibit high contrast regions. This is the case of Rule 30, for example. Aaronson and Carroll's technique then comes in handy: what if we blur these mandalas and apply 3-level thresholding? Well, we get some _very_ interesting images:
 
-{<center>
-
-  <blockquote class="imgur-embed-pub" lang="en" data-id="a/h032O"></blockquote>
-  <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-  <p><em>Some elementary floral automata treated with the blur + thresholding regime.</em></p>
-</center>}
+<img src="https://i.imgur.com/boZkmbv.png" charset="utf-8" />
+<em>
+  Some elementary floral automata treated with the blur + thresholding regime.
+</em>
 
 By applying the macroscopic perspective on these automata, we can distinguish between chaotic and orderly regions and thus unmask their apparent complexity. Plus we get rid of the pixelated look, replacing it for an organic, smooth feel. But better yet: what happens if we apply blurring + thresholding in real-time?
 
-{<center>
-
-  <blockquote class="imgur-embed-pub" lang="en" data-id="a/Sq1E4">
-    <a href="//imgur.com/Sq1E4">Coarsened Floral Automata</a>
-  </blockquote>
-  <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-  <p><em>Blurring + thresholding applied in real-time on elementary floral automata (the rule is chosen at random at every new inwards/outwards cycle).</em></p>
-</center>}
+<img stc="https://i.imgur.com/8UxjoYR.mp4" />
+<em>
+  Blurring + thresholding applied in real-time on elementary floral automata
+  (the rule is chosen at random at every new inwards/outwards cycle).
+</em>
 
 We can also increase the number of cell colors (from the binary black-and-white setup), yielding something like this:
 
-{<center>
-
-  <blockquote class="imgur-embed-pub" lang="en" data-id="DPVsTM6">
-    <a href="//imgur.com/DPVsTM6">Coarsened Floral Automata, Hue scale</a>
-  </blockquote>
-  <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-</center>}
+<video
+  autoplay
+  src="https://i.imgur.com/DPVsTM6.mp4"
+  alt="Coarsened Floral Automata, Hue scale"
+/>
 
 To deal with the considerable number of parameters involved in producing these images, I implemented a little interactive tool in [Processing](https://processing.org/). It allows you to choose the tape (row) size, expand the neighborhood size beyond your immediate neighbors, increase the number of symbols/colors and also to calibrate the blur intensity and choose the K in the K-level thresholding treatment. The project is available on [GitHub](https://github.com/marceloprates/Floral-Automata).
 
