@@ -8,7 +8,4 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://biobath.github.io',
   integrations: [mdx(), sitemap(), tailwind()],
-  redirects: {
-    "/": "/blog",
-  },
 });
