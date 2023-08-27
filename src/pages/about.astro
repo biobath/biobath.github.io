@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/BlogPost.astro";
+import BlogPostLayout from "../layouts/BlogPostLayout.astro";
 
 type AuthorInfo = {
   name: string;
@@ -24,7 +24,7 @@ const authors: AuthorInfo[] = [
 ];
 ---
 
-<Layout
+<BlogPostLayout
   title="About Me"
   description="Lorem ipsum dolor sit amet"
   pubDate={new Date("August 08 2021")}
@@ -47,4 +47,4 @@ const authors: AuthorInfo[] = [
       </div>
     ))
   }
-</Layout>
+</BlogPostLayout>

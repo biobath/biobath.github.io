@@ -1,18 +1,26 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
-    <main>content :)</main>
-    <Footer />
-  </body>
-</html>
+<MainLayout>
+  {
+    Array.from({ length: 10 }, (_, i) => (
+      <div key={i}>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor,
+          nunc eget ultricies ultricies, nunc nisl ultricies nunc, nec ultricies
+          nisl nisl nec nisl. Donec auctor, nunc eget ultricies ultricies, nunc
+          nisl ultricies nunc, nec ultricies nisl nisl nec nisl. Donec auctor,
+          nunc eget ultricies ultricies, nunc nisl ultricies nunc, nec ultricies
+          nisl nisl nec nisl. Donec auctor, nunc eget ultricies ultricies, nunc
+          nisl ultricies nunc, nec ultricies nisl nisl nec nisl. Donec auctor,
+          nunc eget ultricies ultricies, nunc nisl ultricies nunc, nec ultricies
+          nisl nisl nec nisl. Donec auctor, nunc eget ultricies ultricies, nunc
+          nisl ultricies nunc, nec ultricies nisl nisl nec nisl. Donec auctor,
+          nunc eget ultricies ultricies, nunc nisl ultricies nunc, nec ultricies
+          nisl nisl nec nisl.
+        </p>
+      </div>
+    ))
+  }
+</MainLayout>

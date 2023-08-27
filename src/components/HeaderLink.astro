@@ -9,6 +9,10 @@ const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 ---
 
-<a href={href} class=`${isActive ? 'text-blue-500' : ''}` {...props}>
+<a
+  href={href}
+  class=`font-medium ${isActive ? 'text-blue-500' : ''}`
+  {...props}
+>
   <slot />
 </a>

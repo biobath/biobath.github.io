@@ -3,15 +3,16 @@ import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
-<header>
-  <nav>
+<header class="w-full bg-white shadow-md flex-shrink-0 sticky z-10 top-0">
+  <nav class="flex items-center justify-between p-6 gap-6 max-w-7xl mx-auto">
     <h2><a href="/">{SITE_TITLE}</a></h2>
-    <div class="internal-links">
+    <div class="flex gap-6">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
     </div>
-    <div class="social-links">
+    <div>
+      <a href="">Github</a>
       <!-- {TODO: add social links} -->
     </div>
   </nav>
