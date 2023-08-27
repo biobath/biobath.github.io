@@ -6,32 +6,45 @@ const authors = allAuthors();
 ---
 
 <MainLayout title="The BioBath" description="About BioBath">
-  <p>
-    BioBath is a blog maintained by <a
-      class="text-blue-700 underline"
-      href="https://github.com/luism6n">Luís</a
-    > where some of his friends can also post.
-  </p>
+  <div class="space-y-2 py-8">
+    <h1 class="text-4xl font-bold">About</h1>
+    <h2>
+      BioBath is a blog maintained by <a
+        class="text-blue-700 underline"
+        href="https://github.com/luism6n">Luís</a
+      > where some of his friends can also post.
+    </h2>
 
-  <p>Posts can be about anything, in any tone, and of any length.</p>
+    <p>Posts can be about anything, in any tone, and of any length.</p>
+  </div>
 
-  {
-    authors.map((author) => (
-      <div>
-        <img src={author?.avatar} alt={author?.name} />
-        <h2>{author?.name}</h2>
-        {author?.bio && <p>{author.bio}</p>}
-        {author?.twitter && (
-          <p>
-            <a href={author.twitter}>Twitter</a>
-          </p>
-        )}
-        {author?.github && (
-          <p>
-            <a href={author?.github}>Github</a>
-          </p>
-        )}
-      </div>
-    ))
-  }
+  <div class="grid lg:grid-cols-4 gap-6">
+    {
+      authors.map((author) => (
+        <div class="p-10 px-12 rounded-md bg-gray-200 flex flex-col gap-4 text-center">
+          <div class={`p-1 rounded-full ${author?.twBgColor ?? "bg-gray-500"}`}>
+            <img
+              src={author?.avatar}
+              alt={author?.name}
+              class="rounded-full overflow-hidden shadow-md"
+            />
+          </div>
+          <h2 class="font-bold text-xl">{author?.name}</h2>
+          {<p class="flex-grow">{author?.bio ? author.bio : ""}</p>}
+          {author?.twitter && (
+            <p>
+              <a href={author.twitter}>Twitter</a>
+            </p>
+          )}
+          {author?.github && (
+            <p class="flex justify-center">
+              <a href={author?.github}>
+                <i class="ph-github-logo text-3xl bg-black text-white rounded-full p-2" />
+              </a>
+            </p>
+          )}
+        </div>
+      ))
+    }
+  </div>
 </MainLayout>

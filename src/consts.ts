@@ -36,6 +36,7 @@ export const authors: Authors = {
   ntlchs: {
     id: "ntlchs",
     name: "Natália Chies",
+    bio: "Fullstack developer, passionate about technology and design",
     avatar: "https://avatars.githubusercontent.com/u/46873869?v=4",
     github: "https://github.com/ntlchs",
     twBgColor: "bg-pink-500",
