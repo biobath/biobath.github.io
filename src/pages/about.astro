@@ -1,30 +1,12 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import { allAuthors } from "../consts";
+import { getAuthor } from "../consts";
 
-type AuthorInfo = {
-  name: string;
-  avatar: string;
-  bio: string;
-  social: {
-    twitter: string;
-    github: string;
-  };
-};
-
-const authors: AuthorInfo[] = [
-  {
-    name: "John Doe",
-    avatar: "https://avatars.githubusercontent.com/u/1234567?v=4",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    social: {
-      twitter: "https://twitter.com/",
-      github: "https://github.com/",
-    },
-  },
-];
+const authors = allAuthors().map((a) => getAuthor(a));
 ---
 
-<MainLayout title="About Me" description="Lorem ipsum dolor sit amet">
+<MainLayout title="The BioBath" description="About BioBath">
   <p>
     BioBath is a blog maintained by <a
       class="text-blue-700 underline"
@@ -37,17 +19,19 @@ const authors: AuthorInfo[] = [
   {
     authors.map((author) => (
       <div>
-        <img src={author.avatar} alt={author.name} />
-        <h2>{author.name}</h2>
-        <p>{author.bio}</p>
-        <ul>
-          <li>
-            <a href={author.social.twitter}>Twitter</a>
-          </li>
-          <li>
-            <a href={author.social.github}>Github</a>
-          </li>
-        </ul>
+        <img src={author?.avatar} alt={author?.name} />
+        <h2>{author?.name}</h2>
+        {author?.bio && <p>{author.bio}</p>}
+        {author?.twitter && (
+          <p>
+            <a href={author.twitter}>Twitter</a>
+          </p>
+        )}
+        {author?.github && (
+          <p>
+            <a href={author?.github}>Github</a>
+          </p>
+        )}
       </div>
     ))
   }
