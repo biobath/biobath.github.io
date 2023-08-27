@@ -4,6 +4,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/Header.astro";
+import TinyCircle from "../components/TinyCircle.astro";
 import { getAuthor } from "../consts";
 
 type Props = CollectionEntry<"blog">["data"];
@@ -42,9 +43,8 @@ const authorProps = getAuthor(author);
           <div class="grid gap-2">
             <h1 class="font-semibold text-lg">{title}</h1>
             <div class="flex items-center gap-2">
-              <h2>By {author}</h2><i
-                class="ph-circle-fill text-[6px]"
-                style="color: black"></i>
+              <h2>By {author}</h2>
+              <TinyCircle />
               <FormattedDate date={pubDate} />
               <div>
                 {

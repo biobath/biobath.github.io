@@ -5,6 +5,7 @@ export const SITE_TITLE = "BioBath";
 export const SITE_DESCRIPTION = "Welcome to my website!";
 
 export type Author = {
+  id: string;
   name: string;
   bio?: string;
   avatar: string;
@@ -17,13 +18,8 @@ export type Author = {
 export type Authors = { [key: string]: Author };
 
 export const authors: Authors = {
-  ntlchs: {
-    name: "Natália Chies",
-    avatar: "https://avatars.githubusercontent.com/u/46873869?v=4",
-    github: "https://github.com/ntlchs",
-    twBgColor: "bg-blue-500",
-  },
   luism6n: {
+    id: "luism6n",
     name: "Luis M.",
     bio: "Addicted to imagining how things work",
     avatar: "https://avatars.githubusercontent.com/u/35996614?v=4",
@@ -31,15 +27,24 @@ export const authors: Authors = {
     twBgColor: "bg-sky-500",
   },
   marceloprates: {
+    id: "marceloprates",
     name: "Marcelo Prates",
     avatar: "https://avatars.githubusercontent.com/u/1848024?v=4",
     github: "https://github.com/marceloprates",
     twBgColor: "bg-orange-500",
   },
-  yahgo: {
+  ntlchs: {
+    id: "ntlchs",
+    name: "Natália Chies",
+    avatar: "https://avatars.githubusercontent.com/u/46873869?v=4",
+    github: "https://github.com/ntlchs",
+    twBgColor: "bg-pink-500",
+  },
+  yahgos: {
+    id: "yahgos",
     name: "Yahgo",
     avatar: "https://avatars.githubusercontent.com/u/68031393?v=4",
-    github: "https://github.com/yahgo",
+    github: "https://github.com/yahgos",
   },
 };
 
@@ -47,6 +52,8 @@ export const getAuthor = (authorId: string): Author | undefined => {
   return authors[authorId];
 };
 
-export const allAuthors = (): string[] => {
-  return Object.keys(authors);
+export const allAuthors = (): (Author | undefined)[] => {
+  return Object.keys(authors)
+    .sort((b, a) => a.localeCompare(b))
+    .map((a) => getAuthor(a));
 };
