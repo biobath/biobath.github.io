@@ -1,5 +1,5 @@
 ---
-import BlogPostLayout from "../layouts/BlogPostLayout.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 
 type AuthorInfo = {
   name: string;
@@ -24,12 +24,7 @@ const authors: AuthorInfo[] = [
 ];
 ---
 
-<BlogPostLayout
-  title="About Me"
-  description="Lorem ipsum dolor sit amet"
-  pubDate={new Date("August 08 2021")}
-  heroImage="/blog-placeholder-about.jpg"
->
+<MainLayout title="About Me" description="Lorem ipsum dolor sit amet">
   {
     authors.map((author) => (
       <div>
@@ -47,4 +42,4 @@ const authors: AuthorInfo[] = [
       </div>
     ))
   }
-</BlogPostLayout>
+</MainLayout>
