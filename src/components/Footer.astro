@@ -6,20 +6,24 @@ const today = new Date();
 const authors = allAuthors();
 ---
 
-<footer class="w-full bg-gray-200 p-6 flex-shrink-0">
-  <div class="max-w-7xl mx-auto flex items-center flex-col gap-4">
-    <div class="flex gap-4">
-      {
-        authors.map((author, index) => (
-          <div class="flex gap-4">
-            <a target="_blank" href={author?.github} class="flex gap-2">
-              {author?.id}
-            </a>
+<footer class="w-full bg-gray-200 flex flex-col gap-6 p-6 flex-shrink-0">
+  <div class="max-w-7xl mx-auto flex items-center flex-col lg:flex-row gap-4">
+    <hr class="flex-col flex gap-4 lg:flex-row" />
+    {
+      authors.map((author, index) => (
+        <div class="flex gap-4 justify-center">
+          <a target="_blank" href={author?.github} class="flex gap-2">
+            {author?.id}
+          </a>
+          <div class="hidden lg:flex items-center">
             {index !== authors.length - 1 && <TinyCircle />}
           </div>
-        ))
-      }
-    </div>
-     &copy; {today.getFullYear()}
+        </div>
+      ))
+    }
   </div>
+  <hr class="border-t-2 border-gray-500 my-4 lg:hidden" />
+  <p class="text-center">
+    &copy; {today.getFullYear()}
+  </p>
 </footer>

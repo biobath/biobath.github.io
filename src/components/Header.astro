@@ -1,20 +1,17 @@
 ---
-import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header
   class="w-full shadow-md flex-shrink-0 sticky z-10 top-0 text-white bg-gray-700"
 >
-  <nav class="flex items-center justify-between p-6 gap-6 max-w-7xl mx-auto">
-    <h2><a href="/">{SITE_TITLE}</a></h2>
-    <div class="flex gap-6">
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
-    </div>
-    <div>
-      <a href="">Github</a>
-      <!-- {TODO: add social links} -->
-    </div>
+  <nav
+    class="flex items-center justify-evenly w-full p-6 gap-6 max-w-7xl mx-auto"
+  >
+    <HeaderLink href="/blog">Blog</HeaderLink>
+    <a href="/" class="bg-white rounded-full p-1 lg:p-2">
+      <img alt="" src="/public/favicon.svg" class="h-6 lg:h-10" />
+    </a>
+    <HeaderLink href="/about">About</HeaderLink>
   </nav>
 </header>

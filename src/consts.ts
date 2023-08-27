@@ -24,7 +24,7 @@ export const authors: Authors = {
     bio: "Addicted to imagining how things work",
     avatar: "https://avatars.githubusercontent.com/u/35996614?v=4",
     github: "https://github.com/luism6n",
-    twBgColor: "bg-sky-500",
+    twBgColor: "bg-teal-500",
   },
   marceloprates: {
     id: "marceloprates",
@@ -46,6 +46,7 @@ export const authors: Authors = {
     name: "Yahgo",
     avatar: "https://avatars.githubusercontent.com/u/68031393?v=4",
     github: "https://github.com/yahgos",
+    twBgColor: "bg-green-500",
   },
 };
 

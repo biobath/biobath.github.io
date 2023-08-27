@@ -10,7 +10,7 @@ const authors = allAuthors();
     <h1 class="text-4xl font-bold">About</h1>
     <h2>
       BioBath is a blog maintained by <a
-        class="text-blue-700 underline"
+        class="text-red-700 underline"
         href="https://github.com/luism6n">Luís</a
       > where some of his friends can also post.
     </h2>
@@ -38,7 +38,7 @@ const authors = allAuthors();
           )}
           {author?.github && (
             <p class="flex justify-center">
-              <a href={author?.github}>
+              <a href={author?.github} target="_blank">
                 <i class="ph-github-logo text-3xl bg-black text-white rounded-full p-2" />
               </a>
             </p>
