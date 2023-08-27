@@ -1,17 +1,37 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
+
+const author = Astro.props;
 ---
 
 <header
   class="w-full shadow-md flex-shrink-0 sticky z-10 top-0 text-white bg-gray-700"
 >
+  <div
+    id="progressBar"
+    class={`${
+      author?.twBgColor ? author.twBgColor : "bg-red-500"
+    } px-2 h-1 lg:h-2 fixed top-0 left-0 z-50`}
+  >
+  </div>
   <nav
     class="flex items-center justify-evenly w-full p-6 gap-6 max-w-7xl mx-auto"
   >
     <HeaderLink href="/blog">Blog</HeaderLink>
     <a href="/" class="bg-white rounded-full p-1 lg:p-2">
-      <img alt="" src="/public/favicon.svg" class="h-6 lg:h-10" />
+      <img alt="" src="/favicon.svg" class="h-6 lg:h-10" />
     </a>
     <HeaderLink href="/about">About</HeaderLink>
   </nav>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const progressBar = document.getElementById("progressBar");
+
+      window.addEventListener("scroll", () => {
+        const totalHeight = document.body.scrollHeight - window.innerHeight;
+        const progress = (window.pageYOffset / totalHeight) * 100;
+        progressBar.style.width = progress + "%";
+      });
+    });
+  </script>
 </header>
