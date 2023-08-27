@@ -4,59 +4,88 @@ import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/Header.astro";
+import { getAuthor } from "../consts";
 
 type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage, author } =
   Astro.props;
 
+const authorProps = getAuthor(author);
 ---
 
 <html lang="en">
   <head>
+    <script src="https://unpkg.com/phosphor-icons"></script>
     <BaseHead title={title} description={description} />
   </head>
-  <body class={`min-h-screen flex flex-col`}>
-    <Header/>
-    <main class="max-w-4xl h-full mx-auto p-10 flex flex-col flex-grow bg-white px-2">
-      <div class="">
-      <article class="grid py-6 gap-4">
+  <body class="min-h-screen flex flex-col">
+    <Header />
+    <main class="max-w-4xl h-full mx-auto px-10 flex flex-col flex-grow">
+      <!-- <div class={`${authorProps?.twBgColor? authorProps.twBgColor : "bg-gray-500"} px-2 min-h-full`}> -->
+      <div
+        id="progressBar"
+        class={`${
+          authorProps?.twBgColor ? authorProps.twBgColor : "bg-gray-500"
+        } px-2 h-1 lg:h-2 fixed top-0 left-0 z-50`}
+      >
+      </div>
+      <article class="grid p-6 gap-4 bg-white text-justify justify-center">
         <div>
           {
             heroImage && (
               <img width={1020} height={510} src={heroImage} alt="" />
-              )
-            }
+            )
+          }
         </div>
         <div>
-          <div class="grid gap-6">
-            <div>
-              <FormattedDate date={pubDate} />
-              {
-                updatedDate && (
-                  <div>
-                    Last updated on <FormattedDate date={updatedDate} />
-                    </div>
-                    )
-                  }
-            </div>
+          <div class="grid gap-2">
             <h1 class="font-semibold text-lg">{title}</h1>
-            <h2>By {author}</h2>
-            <hr />
+            <div class="flex items-center gap-2">
+              <h2>By {author}</h2><i
+                class="ph-circle-fill text-[6px]"
+                style="color: black"></i>
+              <FormattedDate date={pubDate} />
+              <div>
+                {
+                  updatedDate && (
+                    <div>
+                      Last updated on <FormattedDate date={updatedDate} />
+                    </div>
+                  )
+                }
+              </div>
+            </div>
+            <hr
+              class={`h-1 my-2 ${
+                authorProps?.twBgColor ? authorProps.twBgColor : "bg-gray-500"
+              }`}
+            />
           </div>
           <slot />
         </div>
+        <script
+          src="https://utteranc.es/client.js"
+          repo="biobath/biobath.github.io"
+          issue-term="pathname"
+          label="comments"
+          theme="github-light"
+          crossorigin="anonymous"
+          async></script>
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const progressBar = document.getElementById("progressBar");
+
+            window.addEventListener("scroll", () => {
+              const totalHeight =
+                document.body.scrollHeight - window.innerHeight;
+              const progress = (window.pageYOffset / totalHeight) * 100;
+              progressBar.style.width = progress + "%";
+            });
+          });
+        </script>
       </article>
-      </div>
     </main>
-    <script
-      src="https://utteranc.es/client.js"
-      repo="biobath/biobath.github.io"
-      issue-term="pathname"
-      label="comments"
-      theme="github-light"
-      crossorigin="anonymous"
-      async></script>
     <Footer />
   </body>
-  </html>
+</html>
