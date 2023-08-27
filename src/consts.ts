@@ -39,7 +39,7 @@ export const authors: Authors = {
     bio: "Fullstack developer, passionate about technology and design",
     avatar: "https://avatars.githubusercontent.com/u/46873869?v=4",
     github: "https://github.com/ntlchs",
-    twBgColor: "bg-pink-500",
+    twBgColor: "bg-fuchsia-500",
   },
   yahgos: {
     id: "yahgos",

@@ -33,7 +33,12 @@ const authorProps = getAuthor(author);
         <div class="grid gap-2">
           <h1 class="font-semibold text-lg">{title}</h1>
           <div class="flex items-center gap-2">
-            <h2>By {author}</h2>
+            <h2>
+              By{" "}
+              <a href={authorProps?.github} class="hover:underline">
+                {author}
+              </a>
+            </h2>
             <TinyCircle />
             <FormattedDate date={pubDate} />
             <div>
