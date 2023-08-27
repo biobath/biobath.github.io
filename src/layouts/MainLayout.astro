@@ -17,5 +17,16 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const progressBar = document.getElementById("progressBar");
+
+        window.addEventListener("scroll", () => {
+          const totalHeight = document.body.scrollHeight - window.innerHeight;
+          const progress = (window.pageYOffset / totalHeight) * 100;
+          progressBar.style.width = progress + "%";
+        });
+      });
+    </script>
   </body>
 </html>
